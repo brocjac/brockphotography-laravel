@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/landscapes', [\App\Http\Controllers\galleryPageController::class, 'index']);
+Route::get('/galleries', function () {return view('galleries');});
+Route::get('/photo/{brockphotography_photos}', [\App\Http\Controllers\PhotoController::class, 'show'])->name('photo.show');
+Route::resource('/photos', \App\Http\Controllers\PhotoResourceController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
