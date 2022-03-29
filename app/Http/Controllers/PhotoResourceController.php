@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BrockphotographyPhoto;
 use Illuminate\Http\Request;
 
 class PhotoResourceController extends Controller
@@ -19,66 +20,102 @@ class PhotoResourceController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('photos.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'Title' => 'required|min:3',
+            'Alt' => 'required',
+            'ImgSrc' => 'required',
+            'LargeImgSrc' => 'required',
+            'PhotoValuePrice' => 'required',
+            'CategoryId' => 'required|integer|min:1'
+        ]);
+        $fields['Title'] = strip_tags($fields['Title']);
+        //dd($fields);
+        $fields['ImgSrc'] = file_get_contents($fields['ImgSrc']->path());
+        $fields['LargeImgSrc'] = file_get_contents($fields['LargeImgSrc']->path());
+        BrockphotographyPhoto::create($fields);
+        return redirect('/landscapes')->with('success', 'Photo was uploaded');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\BrockphotographyPhoto  $image
      */
     public function edit($id)
     {
-        //
+
+//        dd(BrockphotographyPhotos::query()->select( 'ImageId',
+//            'Title',
+//            'Alt',
+//            'PhotoValuePrice',
+//            'CategoryId')->where('ImageId', '=', $id)->first());
+
+        return view('photos.update', ['image' => BrockphotographyPhoto::query()->where('id', '=', $id)->first()]);
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param \App\Models\BrockphotographyPhoto $ImageId
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $ImageId)
     {
-        //
+        $ImageId = BrockphotographyPhoto::findOrFail($ImageId);
+        dd($ImageId);
+        $ImageId->Title = $request->Title;
+        $ImageId->Alt = $request->Alt;
+        // for keeping the small and large blob image or file if nothing is in the update field
+        if($request->has('ImgSrc')) {
+            $ImageId->ImgSrc = file_get_contents($request->ImgSrc->path());
+        }
+        if($request->has('LargeImgSrc')) {
+            $ImageId->LargeImgSrc = file_get_contents($request->LargeImgSrc->path());
+        }
+        $ImageId->PhotoValuePrice = $request->PhotoValuePrice;
+        $ImageId->CategoryId = $request->CategoryId;
+        if($ImageId->save()){
+            return redirect('/landscapes');
+        } else {
+            abort(500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param
+     * @param  BrockphotographyPhoto $ImageId
      */
-    public function destroy($id)
+    public function destroy($ImageId)
     {
-        //
+        $id = BrockphotographyPhoto::findOrFail($ImageId);
+        //dd($id);
+        $id->delete();
+        return redirect('/landscapes')->with('success', 'Product have been removed');
     }
 }

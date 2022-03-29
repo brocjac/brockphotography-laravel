@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::get('/landscapes', [\App\Http\Controllers\galleryPageController::class, '
 Route::get('/galleries', function () {return view('galleries');});
 Route::get('/photo/{brockphotography_photos}', [\App\Http\Controllers\PhotoController::class, 'show'])->name('photo.show');
 Route::resource('/photos', \App\Http\Controllers\PhotoResourceController::class);
+Route::post("/logout",[LogoutController::class,"store"])->name("logout");
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

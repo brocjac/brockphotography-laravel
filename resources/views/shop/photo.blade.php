@@ -13,8 +13,8 @@
             <a href="{{route('photos.edit', $photo->id)}}" id="photo' {{$photo->id}} '" class="cartphoto">Edit</a>
             <form action="{{url('/photos', [$photo->id])}}" method="POST">
                 @csrf
-                {{method_field('DELETE')}}
-                <input type="submit" name="submit" value="Delete">
+                @method("DELETE")
+                <input type="submit" value="Delete">
             </form>
         @endauth
         @else

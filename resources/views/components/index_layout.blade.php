@@ -41,18 +41,17 @@
 {{--            <li><a href="user_page.php">User Information</a></li>--}}
 {{--            <?php endif; ?>--}}
 {{--            <?php else: ?>--}}
-            @if(Route::has('login'))
-                @auth
-{{--                    <form method="get">--}}
-{{--                        <div class="logoutFloat"><input type="submit" name="logout" class="btnSubmit" value="Log Out"></div>--}}
-{{--                    </form>--}}
-                    <li> <a href="{{url('/logout')}}">Logout</a></li>
-                @else
-                    <li> <a href="{{url('/login')}}">Login</a></li>
-                    <li> <a href="{{url('/register')}}">Register</a></li>
-                    @endauth
-            @endif
-
+                @if(Route::has('login'))
+                    @auth
+                        <form action="{{route('logout')}}" method="post">
+                            @csrf
+                            <li> <button type="submit">Logout</button></li>
+                        </form>
+                    @else
+                        <li> <a href="{{url('/login')}}">Login</a></li>
+                        <li> <a href="{{url('/register')}}">Register</a></li>
+                        @endauth
+                @endif
         </ul>
     </div>
 </nav>
