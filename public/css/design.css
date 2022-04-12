@@ -41,13 +41,14 @@ nav {
 #navbar li {
 	float: left;
 }
-#navbar li a {
+#navbar li a, li button {
 	display: block;
-	color: white;
+	color: #0a58ca;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
 	font-size: 16pt;
+    background-color: rgba(0,0,0,0);
 }
 #navbar li a:hover {
 	color: #c7c7c7;
@@ -423,11 +424,6 @@ footer a {
 	text-align: center;
 }
 
-/* -------------------- Login/Sign Up ----------------------*/
-.form-group {
-	margin-bottom: 1em;
-}
-
 /*--------------------- Buy Photo Page ------------*/
 .imageBuy {
 	margin: 0 auto;
@@ -458,3 +454,31 @@ footer a {
 	transform: translate(-50%);
 }
 
+/*---------info about picture page---------*/
+
+.photoContainer {
+    max-width: 960px;
+    margin: 0 auto;
+}
+.photoContainerImg img {
+    box-shadow: 0 10px rgba(0,0,0,0.8);
+    max-width: 80%;
+    max-height: 600px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+.photoContainerImg {
+    z-index: 1;
+    background-color: #3b3b3b;
+    border-radius: 10px 10px 0 0;
+    max-height: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.photoContent {
+    z-index: 0;
+    padding: 20px;
+    background-color: #282828;
+    border-radius: 0 0 10px 10px;
+}
