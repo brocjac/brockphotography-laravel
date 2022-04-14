@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('Title');
             $table->decimal('PhotoValuePrice');
             $table->integer('CategoryId');
+//            $table->('Height');
+//            $table->integer('Width');
             $table->timestamps();
         });
 

@@ -42,7 +42,29 @@ class PhotoResourceController extends Controller
             'CategoryId' => 'required|integer|min:1'
         ]);
         $fields['Title'] = strip_tags($fields['Title']);
-        //dd($fields);
+        // Open a the file, this should be in binary mode
+        $fp = fopen($fields['ImgSrc']->path(), 'rb');
+
+        if (!$fp) {
+            echo 'Error: Unable to open image for reading';
+            exit;
+        }
+
+        // Attempt to read the exif headers
+        $headers = exif_read_data($fp);
+
+        if (!$headers) {
+            echo 'Error: Unable to read exif headers';
+            exit;
+        }
+
+        // Print the 'COMPUTED' headers
+        echo 'EXIF Headers:' . PHP_EOL;
+
+        foreach ($headers['COMPUTED'] as $header => $value) {
+            printf(' %s => %s%s', $header, $value, PHP_EOL);
+        }
+        dd($fields);
         $fields['ImgSrc'] = file_get_contents($fields['ImgSrc']->path());
         $fields['LargeImgSrc'] = file_get_contents($fields['LargeImgSrc']->path());
         BrockphotographyPhoto::create($fields);
