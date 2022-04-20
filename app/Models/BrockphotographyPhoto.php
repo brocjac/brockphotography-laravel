@@ -13,6 +13,8 @@ class BrockphotographyPhoto extends Model
         'LargeImgSrc',
         'Alt',
         'PhotoValuePrice',
-        'CategoryId'
+        'CategoryId',
+        'Height',
+        'Width'
     ];
 }

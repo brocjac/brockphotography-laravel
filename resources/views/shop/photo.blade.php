@@ -11,6 +11,11 @@
         <h1>{{$photo->Title}}</h1>
         <p>{{$photo->Alt}}</p>
         <p>Photo Value: ${{$photo->PhotoValuePrice}}</p>
+        <?php
+        print "<pre>";
+        print_r($headers);
+        print "</pre>";
+        ?>
         @if(Route::has('login'))
             @auth
                 <a href="{{route('photos.edit', $photo->id)}}" id="photo' {{$photo->id}} '" class="cartphoto">Edit</a>

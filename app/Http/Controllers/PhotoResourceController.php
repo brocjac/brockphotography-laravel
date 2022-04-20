@@ -64,7 +64,7 @@ class PhotoResourceController extends Controller
         foreach ($headers['COMPUTED'] as $header => $value) {
             printf(' %s => %s%s', $header, $value, PHP_EOL);
         }
-        dd($fields);
+        //dd($fields, $data);
         $fields['ImgSrc'] = file_get_contents($fields['ImgSrc']->path());
         $fields['LargeImgSrc'] = file_get_contents($fields['LargeImgSrc']->path());
         BrockphotographyPhoto::create($fields);
@@ -108,7 +108,7 @@ class PhotoResourceController extends Controller
     public function update(Request $request, $ImageId)
     {
         $ImageId = BrockphotographyPhoto::findOrFail($ImageId);
-        dd($ImageId);
+        //dd($ImageId);
         $ImageId->Title = $request->Title;
         $ImageId->Alt = $request->Alt;
         // for keeping the small and large blob image or file if nothing is in the update field
