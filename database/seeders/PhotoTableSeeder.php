@@ -15,16 +15,16 @@ class PhotoTableSeeder extends Seeder
      */
     public function run()
     {
-        BrockphotographyPhoto::create([
-            'ImgSrc' => file_get_contents(__DIR__."/images/landscapes/thumbnail/1.jpg"),
-            'Alt' => 'This is a photo',
-            'Title' => 'This is a title',
-            'PhotoValuePrice' => 4.99,
-            'LargeImgSrc' => file_get_contents(__DIR__."/images/landscapes/1.jpg"),
-            'CategoryId' => 1,
-//            'Height' => fopen(__DIR__."/images/landscapes/thumbnail/1.jpg", 'rb'),
-//            'Width' => fopen(__DIR__."/images/landscapes/thumbnail/1.jpg", 'rb')
-        ]);
+//        BrockphotographyPhoto::create([
+//            //'ImgSrc' => file_get_contents(__DIR__."/images/landscapes/thumbnail/1.jpg"),
+//            'Alt' => 'This is a photo',
+//            'Title' => 'This is a title',
+//            'PhotoValuePrice' => 4.99,
+//            //'LargeImgSrc' => file_get_contents(__DIR__."/images/landscapes/1.jpg"),
+//            'CategoryId' => 1,
+////            'Height' =>
+////            'Width' =>
+//        ]);
 //        BrockphotographyPhoto::create([
 //            'ImgSrc' => file_get_contents(__DIR__."/images/landscapes/thumbnail/2.jpg"),
 //            'Alt' => 'This is a photo',

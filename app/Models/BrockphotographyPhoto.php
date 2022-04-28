@@ -15,6 +15,10 @@ class BrockphotographyPhoto extends Model
         'PhotoValuePrice',
         'CategoryId',
         'Height',
-        'Width'
+        'Width',
+        'Aperture',
+        'Exposer',
+        'ISO',
+        'FocalLength'
     ];
 }

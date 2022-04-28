@@ -43,7 +43,7 @@ class PhotoResourceController extends Controller
         ]);
         $fields['Title'] = strip_tags($fields['Title']);
         // Open a the file, this should be in binary mode
-        $fp = fopen($fields['ImgSrc']->path(), 'rb');
+        $fp = fopen($fields['LargeImgSrc']->path(), 'rb');
 
         if (!$fp) {
             echo 'Error: Unable to open image for reading';
@@ -64,9 +64,15 @@ class PhotoResourceController extends Controller
         foreach ($headers['COMPUTED'] as $header => $value) {
             printf(' %s => %s%s', $header, $value, PHP_EOL);
         }
-        //dd($fields, $data);
+        //dd($fields);
         $fields['ImgSrc'] = file_get_contents($fields['ImgSrc']->path());
         $fields['LargeImgSrc'] = file_get_contents($fields['LargeImgSrc']->path());
+        $fields['Height'] = $headers['COMPUTED']['Height'] ?? '';
+        $fields['Width'] = $headers['COMPUTED']['Width'] ?? '';
+        $fields['Aperture'] = $headers['COMPUTED']['ApertureFNumber'] ?? '';
+        $fields['Exposer'] = $headers['EXIF']['ExposureTime'] ?? '';
+        $fields['ISO'] = $headers['EXIF']['ISOSpeedRatings'] ?? '';
+        $fields['FocalLength'] = $headers['EXIF']['FocalLength'] ?? '';
         BrockphotographyPhoto::create($fields);
         return redirect('/landscapes')->with('success', 'Photo was uploaded');
     }
