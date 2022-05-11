@@ -14,7 +14,7 @@
         @endif
             <div class="image">
                 <a href="data:image/jpeg;base64,{!! base64_encode($photo->LargeImgSrc) !!}" data-lightbox="mygallery">
-                    <img src="data:image/jpeg;base64, {!! base64_encode($photo->ImgSrc) !!}" alt="{{$photo->Alt}}. " class="images">
+                    <img src="data:image/jpeg;base64, {!! base64_encode($photo->LargeImgSrc) !!}" alt="{{$photo->Alt}}. " class="images" width="50px">
                 </a><br>
                 <a href="{{route('photo.show', $photo->id)}}" id="photo' {{$photo->PhotoId}} '" class="cartphoto">Learn More</a>
             </div>

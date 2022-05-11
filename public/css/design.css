@@ -409,6 +409,10 @@ footer a {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+.image a img {
+    /*image-resolution: 72dpi;*/
+    /*image-rendering: optimizeSpeed;*/
+}
 
 /* add address */
 .addAddress {

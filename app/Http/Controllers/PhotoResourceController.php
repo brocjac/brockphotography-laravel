@@ -42,7 +42,7 @@ class PhotoResourceController extends Controller
             'CategoryId' => 'required|integer|min:1'
         ]);
         $fields['Title'] = strip_tags($fields['Title']);
-        // Open a the file, this should be in binary mode
+        // Open the file, this should be in binary mode
         $fp = fopen($fields['LargeImgSrc']->path(), 'rb');
 
         if (!$fp) {
@@ -52,7 +52,6 @@ class PhotoResourceController extends Controller
 
         // Attempt to read the exif headers
         $headers = exif_read_data($fp);
-
         if (!$headers) {
             echo 'Error: Unable to read exif headers';
             exit;
@@ -64,6 +63,15 @@ class PhotoResourceController extends Controller
         foreach ($headers['COMPUTED'] as $header => $value) {
             printf(' %s => %s%s', $header, $value, PHP_EOL);
         }
+//        foreach ($headers as $key => $section) {
+//            if (is_array($section)){
+//                echo "$key: $section<br/>\n";
+//            } else {
+//                foreach ($section as $name => $val) {
+//                    echo "$key.$name: $val<br />\n";
+//                }
+//            }
+//        }
         //dd($fields);
         $fields['ImgSrc'] = file_get_contents($fields['ImgSrc']->path());
         $fields['LargeImgSrc'] = file_get_contents($fields['LargeImgSrc']->path());
