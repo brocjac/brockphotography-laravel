@@ -11,6 +11,13 @@
         <h1>{{$photo->Title}}</h1>
         <p>{{$photo->Alt}}</p>
         <p>Photo Value: ${{$photo->PhotoValuePrice}}</p>
+        <form action="{{route('cart.store')}}" method="post">
+            @csrf
+            <input type="hidden" name="id" value="{{$photo->id}}">
+            <input type="hidden" name="Title" value="{{$photo->Title}}">
+            <input type="hidden" name="PhotoValuePrice" value="{{$photo->PhotoValuePrice}}">
+            <button type="submit" class="button">Add to Cart</button>
+        </form>
         @if(Route::has('login'))
             @auth
                 <a href="{{route('photos.edit', $photo->id)}}" id="photo' {{$photo->id}} '" class="cartphoto">Edit</a>

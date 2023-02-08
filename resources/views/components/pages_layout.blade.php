@@ -16,21 +16,43 @@
         <ul>
             <li> <a href="galleries.php">Galleries</a></li>
             <li> <a href="contact.php">Contact</a></li>
-            <?php if(isset($_SESSION['authUser']) and $_SESSION['authUser']): ?>
-            <?php if ($_SESSION['authUser']['role'] == 'admin'): ?>
-            <li><a href="users.php">Edit Users</a></li>
-            <li><a href="user_page.php">User Information</a></li>
-            <?php elseif ($_SESSION['authUser']['role'] == 'user'):?>
-            <li><a href="user_page.php">User Information</a></li>
-            <?php endif; ?>
-            <?php else: ?>
-            <li> <a href="sign_up_login.php">Sign Up</a></li>
-            <?php endif; ?>
-            <?php if(isset($_SESSION['authUser'])): ?>
-            <form method="get">
-                <div class="logoutFloat"><input type="submit" name="logout" class="btnSubmit" value="Log Out"></div>
-            </form>
-            <?php endif; ?>
+            {{--PHP version--}}
+{{--            <?php if(isset($_SESSION['authUser']) and $_SESSION['authUser']): ?>--}}
+{{--            <?php if ($_SESSION['authUser']['role'] == 'admin'): ?>--}}
+{{--            <li><a href="users.php">Edit Users</a></li>--}}
+{{--            <li><a href="user_page.php">User Information</a></li>--}}
+{{--            <?php elseif ($_SESSION['authUser']['role'] == 'user'):?>--}}
+{{--            <li><a href="user_page.php">User Information</a></li>--}}
+{{--            <?php endif; ?>--}}
+{{--            <?php else: ?>--}}
+{{--            <li> <a href="sign_up_login.php">Sign Up</a></li>--}}
+{{--            <?php endif; ?>--}}
+{{--            <?php if(isset($_SESSION['authUser'])): ?>--}}
+{{--            <form method="get">--}}
+{{--                <div class="logoutFloat"><input type="submit" name="logout" class="btnSubmit" value="Log Out"></div>--}}
+{{--            </form>--}}
+{{--            <?php endif; ?>--}}
+
+            {{--Laravel version--}}
+{{--            <?php if(isset($_SESSION['authUser']) and $_SESSION['authUser']): ?>--}}
+{{--            <?php if ($_SESSION['authUser']['role'] == 'admin'): ?>--}}
+{{--            <li><a href="users.php">Edit Users</a></li>--}}
+{{--            <li><a href="user_page.php">User Information</a></li>--}}
+{{--            <?php elseif ($_SESSION['authUser']['role'] == 'user'):?>--}}
+{{--            <li><a href="user_page.php">User Information</a></li>--}}
+{{--            <?php endif; ?>--}}
+{{--            <?php else: ?>--}}
+            @if(Route::has('login'))
+            @auth
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    <li> <button type="submit">Logout</button></li>
+                </form>
+            @else
+                <li> <a href="{{url('/login')}}">Login</a></li>
+                <li> <a href="{{url('/register')}}">Register</a></li>
+                @endauth
+            @endif
         </ul>
     </div>
 </nav>

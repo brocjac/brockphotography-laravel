@@ -421,7 +421,12 @@ footer a {
 .addAddress input {
 	margin: 10px;
 }
-
+.addPhoto {
+	padding: 20px;
+}
+.addPhoto a {
+	
+}
 
 /*---------------------- Contact -------------------------------*/
 #contact {
