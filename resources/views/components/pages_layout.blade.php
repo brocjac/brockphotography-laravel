@@ -14,7 +14,7 @@
     <h3><a class="links" href="{{url('/')}}">Brock Photography</a></h3>
     <div id="navbar">
         <ul>
-            <li> <a href="galleries.php">Galleries</a></li>
+            <li> <a href="{{url('/galleries')}}">Galleries</a></li>
             <li> <a href="contact.php">Contact</a></li>
             {{--PHP version--}}
 {{--            <?php if(isset($_SESSION['authUser']) and $_SESSION['authUser']): ?>--}}
