@@ -22,8 +22,8 @@ class PhotoTableSeeder extends Seeder
 //            'PhotoValuePrice' => 4.99,
 //            //'LargeImgSrc' => file_get_contents(__DIR__."/images/landscapes/1.jpg"),
 //            'CategoryId' => 1,
-////            'Height' =>
-////            'Width' =>
+//            'Height' =>
+//            'Width' =>
 //        ]);
 //        BrockphotographyPhoto::create([
 //            'ImgSrc' => file_get_contents(__DIR__."/images/landscapes/thumbnail/2.jpg"),
