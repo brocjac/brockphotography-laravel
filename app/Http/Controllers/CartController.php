@@ -35,7 +35,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        Cart::add($request->id, $request->Title, 1, $request->PhotoValuePrice)->associate('App\Models\BrockphotographyPhoto');
+        Cart::add($request->id, $request->Title, $request->PhotoValuePrice)->associate('App\Models\BrockphotographyPhoto');
         return redirect()->route('cart.index')->with('success_message'. 'Item in cart');
     }
 
