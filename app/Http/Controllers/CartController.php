@@ -37,8 +37,10 @@ class CartController extends Controller
     {
         Cart::add([
             'id' => $request->id,
-            'Title' => $request->Title,
-            'PhotoValuePrice' => $request->PhotoValuePrice
+            'name' => $request->name,
+            'price' => $request->price,
+            'qty' => $request->quantity,
+            'image' => $request->image
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
         return redirect()->route('cart.index');

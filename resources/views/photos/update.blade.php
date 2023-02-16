@@ -9,11 +9,11 @@
     <form method="post" action="{{url('/photos', [$image->id])}}" enctype="multipart/form-data">
         @csrf
         @method('patch')
-        <p><label>Title: <input type="text" name="Title" value="{{$image->Title}}"></label></p>
-        <p><label>Small Image: <input type="file" name="ImgSrc"></label></p>
-        <p><label>Large Image: <input type="file" name="LargeImgSrc"></label></p>
-        <p><label>Photo Alt Tag: <input type="text" name="Alt" value="{{$image->Alt}}"></label></p>
-        <p><label>Image Value: <input type="number" step=".01" name="PhotoValuePrice" value="{{$image->PhotoValuePrice}}"></label></p>
+        <p><label>Title: <input type="text" name="name" value="{{$image->name}}"></label></p>
+        <p><label>Small Image: <input type="file" name="image"></label></p>
+        <p><label>Large Image: <input type="file" name="imageLarge"></label></p>
+        <p><label>Photo Alt Tag: <input type="text" name="description" value="{{$image->description}}"></label></p>
+        <p><label>Image Value: <input type="number" step=".01" name="price" value="{{$image->price}}"></label></p>
         <label for="CategoryId">Choose a Category:
             <select name="CategoryId">
                 <option value="1" @if ($image->CategoryId === 1)selected @endif>Landscapes</option>

@@ -34,16 +34,16 @@ class PhotoResourceController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            'Title' => 'required|min:3',
-            'Alt' => 'required',
-            'ImgSrc' => 'required',
-            'LargeImgSrc' => 'required',
-            'PhotoValuePrice' => 'required',
+            'name' => 'required|min:3',
+            'description' => 'required',
+            'image' => 'required',
+            'imageLarge' => 'required',
+            'price' => 'required',
             'CategoryId' => 'required|integer|min:1'
         ]);
-        $fields['Title'] = strip_tags($fields['Title']);
+        $fields['name'] = strip_tags($fields['name']);
         // Open the file, this should be in binary mode
-        $fp = fopen($fields['LargeImgSrc']->path(), 'rb');
+        $fp = fopen($fields['imageLarge']->path(), 'rb');
 
         if (!$fp) {
             echo 'Error: Unable to open image for reading';
@@ -73,8 +73,8 @@ class PhotoResourceController extends Controller
 //            }
 //        }
         //dd($fields);
-        $fields['ImgSrc'] = file_get_contents($fields['ImgSrc']->path());
-        $fields['LargeImgSrc'] = file_get_contents($fields['LargeImgSrc']->path());
+        $fields['image'] = file_get_contents($fields['image']->path());
+        $fields['imageLarge'] = file_get_contents($fields['imageLarge']->path());
         $fields['Height'] = $headers['COMPUTED']['Height'] ?? '';
         $fields['Width'] = $headers['COMPUTED']['Width'] ?? '';
         $fields['Aperture'] = $headers['COMPUTED']['ApertureFNumber'] ?? '';
@@ -123,16 +123,16 @@ class PhotoResourceController extends Controller
     {
         $ImageId = BrockphotographyPhoto::findOrFail($ImageId);
         //dd($ImageId);
-        $ImageId->Title = $request->Title;
-        $ImageId->Alt = $request->Alt;
+        $ImageId->name = $request->name;
+        $ImageId->description = $request->description;
         // for keeping the small and large blob image or file if nothing is in the update field
-        if($request->has('ImgSrc')) {
-            $ImageId->ImgSrc = file_get_contents($request->ImgSrc->path());
+        if($request->has('image')) {
+            $ImageId->image = file_get_contents($request->image->path());
         }
-        if($request->has('LargeImgSrc')) {
-            $ImageId->LargeImgSrc = file_get_contents($request->LargeImgSrc->path());
+        if($request->has('imageLarge')) {
+            $ImageId->imageLarge = file_get_contents($request->imageLarge->path());
         }
-        $ImageId->PhotoValuePrice = $request->PhotoValuePrice;
+        $ImageId->price = $request->price;
         $ImageId->CategoryId = $request->CategoryId;
         if($ImageId->save()){
             return redirect('/landscapes');

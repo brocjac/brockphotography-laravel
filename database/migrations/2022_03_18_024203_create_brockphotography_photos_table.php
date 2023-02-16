@@ -16,9 +16,9 @@ return new class extends Migration
     {
         Schema::create('brockphotography_photos', function (Blueprint $table) {
             $table->id();
-            $table->string('Alt');
-            $table->string('Title');
-            $table->decimal('PhotoValuePrice');
+            $table->string('description');
+            $table->string('name');
+            $table->decimal('price');
             $table->integer('CategoryId');
             $table->string('Height');
             $table->string('Width');
@@ -30,8 +30,8 @@ return new class extends Migration
         });
 
         //once the table is created use a raw query to ALTER it and add the MEDIUMBLOB
-        DB::statement("ALTER TABLE brockphotography_photos ADD ImgSrc MEDIUMBLOB NULL");
-        DB::statement("ALTER TABLE brockphotography_photos ADD LargeImgSrc MEDIUMBLOB NULL");
+        DB::statement("ALTER TABLE brockphotography_photos ADD image MEDIUMBLOB NULL");
+        DB::statement("ALTER TABLE brockphotography_photos ADD imageLarge MEDIUMBLOB NULL");
     }
 
     /**

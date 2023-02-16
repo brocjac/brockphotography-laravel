@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class BrockphotographyPhoto extends Model
 {
     protected $fillable = [
-        'Title',
-        'ImgSrc',
-        'LargeImgSrc',
-        'Alt',
-        'PhotoValuePrice',
+        'name',
+        'image',
+        'imageLarge',
+        'description',
+        'price',
         'CategoryId',
         'Height',
         'Width',

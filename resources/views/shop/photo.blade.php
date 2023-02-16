@@ -5,17 +5,19 @@
 @section('content')
 <div class="photoContainer">
     <div class="photoContainerImg">
-    <img src="data:image/jpeg;base64, {!! base64_encode($photo->LargeImgSrc) !!}" alt="{{$photo->Alt}}. " class="imagesMoreInfo">
+    <img src="data:image/jpeg;base64, {!! base64_encode($photo->imageLarge) !!}" alt="{{$photo->description}}. " class="imagesMoreInfo">
     </div>
     <div class="photoContent">
-        <h1>{{$photo->Title}}</h1>
-        <p>{{$photo->Alt}}</p>
-        <p>Photo Value: ${{$photo->PhotoValuePrice}}</p>
+        <h1>{{$photo->name}}</h1>
+        <p>{{$photo->description}}</p>
+        <p>Photo Value: ${{$photo->price}}</p>
+        <label for="quantity">Qty:<input type="number"  name="quantity" value="{{$photo->quantity}}"></label>
         <form action="{{route('cart.store')}}" method="post">
             @csrf
             <input type="hidden" name="id" value="{{$photo->id}}">
-            <input type="hidden" name="Title" value="{{$photo->Title}}">
-            <input type="hidden" name="PhotoValuePrice" value="{{$photo->PhotoValuePrice}}">
+            <input type="hidden" name="name" value="{{$photo->name}}">
+            <input type="hidden" name="price" value="{{$photo->price}}">
+            <input type="hidden" name="qty" value="{{$photo->quantity}}">
             <button type="submit" class="button">Add to Cart</button>
         </form>
         @if(Route::has('login'))

@@ -22,8 +22,9 @@
         @endif
         @foreach (Cart::content() as $photoCart)
             <p>{{$photoCart->id}}</p>
-            <p>{{$photoCart->Title}}</p>
-            <p>{{$photoCart->PhotoValuePrice}}</p>
+            <p>{{$photoCart->name}}</p>
+            <p>{{$photoCart->price}}</p>
+            <p>{{$photoCart->qty}}</p>
         @endforeach
     </div>
 @endsection
