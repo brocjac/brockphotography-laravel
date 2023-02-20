@@ -15,9 +15,11 @@
         <form action="{{route('cart.store')}}" method="post">
             @csrf
             <input type="hidden" name="id" value="{{$photo->id}}">
+            <input type="hidden" name="image_id" value="{{$photo->id}}">
             <input type="hidden" name="name" value="{{$photo->name}}">
+            <input type="hidden" name="description" value="{{$photo->description}}">
             <input type="hidden" name="price" value="{{$photo->price}}">
-            <input type="hidden" name="qty" value="{{$photo->quantity}}">
+            <input type="hidden" value="5" name="quantity">
             <button type="submit" class="button">Add to Cart</button>
         </form>
         @if(Route::has('login'))

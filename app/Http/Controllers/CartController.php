@@ -33,14 +33,16 @@ class CartController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function addToCart(Request $request)
     {
         Cart::add([
             'id' => $request->id,
+            'image_id' => $request->id,
             'name' => $request->name,
             'price' => $request->price,
-            'qty' => $request->quantity,
-            'image' => $request->image
+            'description' => $request->description,
+            'quantity' => $request->quantity,
+            //dd($request)
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
         return redirect()->route('cart.index');

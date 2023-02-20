@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\BrockphotographyPhoto;
+use App\Models\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use PhpMyAdmin\Session;
+use Illuminate\Support\Facades\Auth;
 
 class PhotoResourceController extends Controller
 {
@@ -153,5 +157,45 @@ class PhotoResourceController extends Controller
         //dd($id);
         $id->delete();
         return redirect('/landscapes')->with('success', 'Product have been removed');
+    }
+    public function cartAdd(Request $request)
+    {
+        if($request->isMethod('post')){
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+        }
+        //generate session Id is not exist
+//        $session_id = Session::get('session_id');
+//        if(empty($session_id)){
+//            $session_id = Session::getId();
+//            Session::put('session_id', $session_id);
+//        }
+        if(Auth::check()){
+            //user logged in
+            $user_id = Auth::user()->id;
+            //dd($user_id);
+            //$countProducts = Cart::where(['user_id'=>$data['user_id']]);
+        } else {
+            //user not logged in
+            $user_id = 0;
+            //$countProducts = Cart::where([])->count();
+        }
+
+        //save product in carts table
+        $item = new Cart;
+//        $item->session_id = $session_id;
+        $item->user_id = $user_id;
+        $item->image_id = $data['image_id'];
+        $item->name = $data['name'];
+        $item->description = $data['description'];
+        $item->price = $data['price'];
+        $item->quantity = $data['quantity'];
+        $item->save();
+        return redirect()->back()->with('success_message', 'Product has been added to cart');
+    }
+    public function cart(){
+        $getCartItems = Cart::getCartItems();
+        //dd($getCartItems);
+        return view('cart')->with(compact('getCartItems'));
     }
 }
