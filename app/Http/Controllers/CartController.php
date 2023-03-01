@@ -35,13 +35,19 @@ class CartController extends Controller
      */
     public function addToCart(Request $request)
     {
+        $request->validate([
+            'quantity' => 'required|integer|min:1|max:10',
+        ]);
+        $quantity = request('quantity');
+
+
         Cart::add([
             'id' => $request->id,
             'image_id' => $request->id,
             'name' => $request->name,
             'price' => $request->price,
             'description' => $request->description,
-            'quantity' => $request->quantity,
+            'quantity' => $quantity,
             //dd($request)
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');

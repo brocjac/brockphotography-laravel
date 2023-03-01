@@ -15,18 +15,24 @@
         @endif
             <h1>Cart</h1>
 
-{{--        @if ($getCartItems::count() > 0)--}}
+        @if (\App\Models\Cart::count() > 0)
 
-{{--            <h2>{{$getCartItems::count()}} item(s) in Shopping Cart</h2>--}}
-{{--        @else--}}
-{{--            <h3>No items in Cart</h3>--}}
-{{--        @endif--}}
+            <h2>{{\App\Models\Cart::count()}} item(s) in Shopping Cart</h2>
+        @else
+            <h3>No items in Cart</h3>
+        @endif
         @foreach ($getCartItems as $photoCart)
             <div class="cartItem">
-                <p>{{$photoCart['name']}}</p>
-                <p>{{$photoCart['price']}}</p>
-                <p>{{$photoCart['description']}}</p>
-                <p>{{$photoCart['quantity']}}</p>
+                <div><img src="data:image/jpeg;base64, {!! base64_encode($photoCart->photo->image) !!}" alt="{{$photoCart->photo->description}}. " class="classImage"></div>
+                <div>
+                    <p>{{$photoCart->name}}</p>
+                    <p>${{$photoCart->price}}</p>
+                </div>
+                <div><p>Qty: {{$photoCart->quantity}}</p></div>
+                <div>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
             </div>
         @endforeach
     </div>

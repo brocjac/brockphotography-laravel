@@ -13,8 +13,14 @@
 	width: 80%;
 	margin: 0 auto;
 }
+.contentLayout {
+    background-color: rgba(40, 40, 40, .6);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 1rem;
+    margin: auto;
+}
 
-/* Navigation */
+/* Navigation home */
 nav {
 	position: absolute;
 	width: 100%;
@@ -77,10 +83,17 @@ nav {
 	padding: 5px 8px;
 	background-color: #2B2B2B;
 }
+#navbar img {
+    height: 37px;
+    width: auto;
+}
+#cart a {
+    height: 60px;
+}
 #cartword {
 	float: left;
 	padding: 9px 7px 0;
-	font-size: 16px;
+	font-size: 26px;
 	color: white;
 }
 #navbar ul form {
@@ -228,18 +241,14 @@ nav {
 	text-align: left;
 	display: block;
 	overflow: hidden;
-	background-color: rgba(0, 0, 0, .3);
-	padding: 20px;
-	border-radius: 20px;
+    padding: 20px;
 }
 .testimonial h1 {
 	text-align: center;
 }
 .testimonial h2{
 	text-align: center;
-	border-bottom: 5px solid #0a58ca;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
+	padding-bottom: 2px;
 }
 .testimonial h3 {
 	text-align: center;
@@ -425,7 +434,7 @@ footer a {
 	padding: 20px;
 }
 .addPhoto a {
-	
+
 }
 
 /*---------------------- Contact -------------------------------*/
@@ -490,4 +499,50 @@ footer a {
     padding: 20px;
     background-color: #282828;
     border-radius: 0 0 10px 10px;
+}
+.photoContent button, .photoContent a, .photoContent form input{
+    margin: 10px 0;
+}
+.photoContent a {
+    float: left;
+}
+.photoContent a {
+    margin-right: 10px;
+}
+
+/*-----------------store------------------*/
+
+.cartItem img {
+    height: 200px;
+    width: auto;
+}
+.cartItem {
+    display: grid;
+    place-items: center;
+    row-gap: 20px;
+    grid-template-columns: auto auto auto auto;
+    padding: 20px;
+    margin: 20px;
+    background-color: rgba(40, 40, 40, .6);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+.cartItem div {
+    text-align: center;
+}
+
+/*--------------contact-------------*/
+
+.contact {
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+/*------------"your logged in" page------------*/
+
+.loggedIn {
+    padding: 20px;
+    text-align: center;
+    margin: auto;
 }

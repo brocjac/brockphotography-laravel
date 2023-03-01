@@ -16,7 +16,7 @@
             <div class="galleries">
                 <div class="containerImg">
                     <div><img src="images/food/DSC_0003.jpg" alt="Landscapes. " height="300" width="300" class="imgGallery"></div>
-                    <a href="landscapes.php?CategoryId=2"><div class="overlay"><div class="imgText">Foods</div></div></a>
+                    <a href="{{url('/landscapes')}}"><div class="overlay"><div class="imgText">Foods</div></div></a>
                 </div>
             </div>
         </div>

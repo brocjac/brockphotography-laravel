@@ -13,7 +13,7 @@
     <div id="navbar">
         <ul>
             <li> <a href="{{url('/galleries')}}">Galleries</a></li>
-            <li> <a href="contact.php">Contact</a></li>
+            <li> <a href="{{url('/contact')}}">Contact</a></li>
 
             {{--PHP version--}}
 {{--            <?php if(isset($_SESSION['authUser']) and $_SESSION['authUser']): ?>--}}
@@ -52,6 +52,7 @@
                         <li> <a href="{{url('/register')}}">Register</a></li>
                         @endauth
                 @endif
+            <li id="cart"> <a href="{{url('/cart')}}"><img src="/images/illustrations/cart/shopping_cart.svg" alt="Shopping cart. " id="cartshop"/></a></li>
         </ul>
     </div>
 </nav>
@@ -62,10 +63,10 @@
         <br>
         Copywrite 2019</p>
     <a href="https://www.instagram.com/brock_productions_2434/" target="_blank">
-        <img src="{{asset('illustrations/instagram.svg')}}" alt="Instagram. " width="30px">
+        <img src="/images/illustrations/instagram.svg" alt="Instagram. " width="30px">
     </a>
     <a href="https://www.facebook.com/Brock-Photography-2247863825329198/?modal=admin_todo_tour" target="_blank">
-        <img src="{{asset('illustrations/facebook.svg')}}" alt="Facebook. " width="30px">
+        <img src="/images/illustrations/facebook.svg" alt="Facebook. " width="30px">
     </a>
 </footer>
 </div>

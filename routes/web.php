@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::get('/landscapes', [\App\Http\Controllers\galleryPageController::class, 'index']);
 Route::get('/galleries', function () {return view('galleries');});
+Route::get('/contact', function () {return view('contact');});
 Route::get('/photo/{brockphotography_photos}', [\App\Http\Controllers\PhotoController::class, 'show'])->name('photo.show');
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');

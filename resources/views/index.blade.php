@@ -11,9 +11,10 @@
         </div>
     </section>
     <div id="skipTo" class="content">
-        <div class="testimonial">
+        <div class="contentLayout testimonial">
             <div class="selfPortrait"></div>
-            <h2>Jacob Brockwell <br> The Photographer</h2>
+            <h2>Jacob Brockwell</h2>
+            <h3>The Photographer</h3>
             <h3>My name is Jacob Brockwell, I have always loved everything about the beauty of nature. </h3>
             <p class="descriptionTest">
                 I am always there to capture natures lovely moments.

@@ -181,6 +181,8 @@ class PhotoResourceController extends Controller
             //$countProducts = Cart::where([])->count();
         }
 
+        $quantity = $request->input('quantity');
+
         //save product in carts table
         $item = new Cart;
 //        $item->session_id = $session_id;
@@ -189,7 +191,7 @@ class PhotoResourceController extends Controller
         $item->name = $data['name'];
         $item->description = $data['description'];
         $item->price = $data['price'];
-        $item->quantity = $data['quantity'];
+        $item->quantity = $quantity;
         $item->save();
         return redirect()->back()->with('success_message', 'Product has been added to cart');
     }
