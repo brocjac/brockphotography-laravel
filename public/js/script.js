@@ -14,3 +14,15 @@ let scene = new ScrollMagic.Scene({
     .setTween(timeline)
     .setPin("section")
     .addTo(controller);
+
+var itemId = $(this).data('item_id'); // Replace with the actual item ID
+$.ajax({
+    url: '/cart/' + itemId,
+    type: 'DELETE',
+    success: function(response) {
+        alert(response.message);
+    },
+    error: function(response) {
+        alert('Error: ' + response.responseText);
+    }
+});

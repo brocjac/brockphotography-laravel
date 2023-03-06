@@ -30,8 +30,12 @@
                 </div>
                 <div><p>Qty: {{$photoCart->quantity}}</p></div>
                 <div>
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <form id="delete-item-form">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="item_id" value="{{ $photoCart->id }}">
+                        <button type="submit">Delete Item</button>
+                    </form>
                 </div>
             </div>
         @endforeach

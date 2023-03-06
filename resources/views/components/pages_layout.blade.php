@@ -67,7 +67,7 @@
         <img src="/images/illustrations/facebook.svg" alt="Facebook. " width="30px">
     </a>
 </footer>
-<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="jquery.hashchange.min.js"></script>
 <script src="{{asset('js/lightbox.js')}}"></script>
 <script src="{{asset('js/script.js')}}"></script>

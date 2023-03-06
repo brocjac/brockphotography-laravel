@@ -91,10 +91,20 @@ class CartController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        //
+        $item = Cart::find($id);
+        if (!$item) {
+            return response()->json([
+                'message' => 'item not found'
+            ], 404);
+        }
+        $item->delete();
+
+        return  response()->json([
+            'message' => 'Item removed successfully'
+        ]);
     }
 }
