@@ -28,7 +28,7 @@ Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->nam
 Route::post('/cart', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
 Route::post('/cart', '\App\Http\Controllers\PhotoResourceController@cartAdd')->name('cart.store');
 Route::get('/cart', '\App\Http\Controllers\PhotoResourceController@cart')->name('cart.store');
-Route::delete('/cart/{id}', 'CartController@destroy')->name('cart.store');
+Route::get('/cart/{id}', '\App\Http\Controllers\CartController@destroy');
 Route::get('empty', function (){
     Cart::destroy();
 });
