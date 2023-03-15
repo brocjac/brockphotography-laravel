@@ -32,6 +32,9 @@ Route::get('/cart/{id}', '\App\Http\Controllers\CartController@destroy');
 Route::get('empty', function (){
     Cart::destroy();
 });
+Route::middleware(['auth', 'is_admin'])->group(function () {
+    Route::get('/something-that-should-not-be-seen', [\App\Http\Controllers\AdminController::class, 'index']);
+});
 Route::resource('/photos', \App\Http\Controllers\PhotoResourceController::class);
 Route::post("/logout",[LogoutController::class,"store"])->name("logout");
 Auth::routes();
