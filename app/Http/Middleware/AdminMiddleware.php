@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
@@ -17,10 +17,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->user()->is_admin) {
+        if (!Auth::check() || !Auth::user()->admin) {
             return $next($request);
         }
-
-        return redirect('/');
+        abort(403, 'Unauthorized action.');
+        //return redirect('/');
     }
 }

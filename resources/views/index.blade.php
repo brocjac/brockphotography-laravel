@@ -7,6 +7,11 @@
         <div class="container">
             <h1 class="mainTitle">Brock Photography</h1>
             <p class="titleDescription">Experience Gods Loving Creation Through a Lens</p>
+            @if (\Illuminate\Support\Facades\Auth::user()->is_admin())
+                <p>Welcome Admin</p>
+            @else
+                <p>Welcome</p>
+            @endif
             <img class="mainImg" src="{{asset('/images/landscapes/1.jpg')}}" alt="mountain and biker">
         </div>
     </section>
