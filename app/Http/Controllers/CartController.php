@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-//use Gloudemans\Shoppingcart\Cart;
 use App\Models\BrockphotographyPhoto;
 use App\Models\Cart;
 use Illuminate\Http\Request;
@@ -48,7 +47,6 @@ class CartController extends Controller
             'price' => $request->price,
             'description' => $request->description,
             'quantity' => $quantity,
-            //dd($request)
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
         return redirect()->route('cart.index');

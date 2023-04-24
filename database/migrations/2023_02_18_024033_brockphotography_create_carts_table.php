@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table){
             $table->id();
-//            $table->string('session_id');
             $table->unsignedBigInteger('image_id');
             $table->foreign('image_id')->references('id')->on('brockphotography_photos')->onDelete('cascade');
             $table->string('user_id');

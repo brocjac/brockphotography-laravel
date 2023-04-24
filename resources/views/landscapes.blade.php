@@ -22,5 +22,9 @@
     <?php
     echo '</div></div>';
     ?>
+    @if(auth()->check())
+        @if (auth()->user()->admin)
             <div class="addPhoto"><a href="{{asset('photos/create')}}">Add Photo</a></div>
+        @endif
+    @endif
 @endsection

@@ -17,7 +17,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check() || !Auth::user()->admin) {
+        if (!Auth::check() || Auth::user() && Auth::user()->isAdmin()) {
             return $next($request);
         }
         abort(403, 'Unauthorized action.');

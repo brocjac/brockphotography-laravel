@@ -76,7 +76,6 @@ class PhotoResourceController extends Controller
 //                }
 //            }
 //        }
-        //dd($fields);
         $fields['image'] = file_get_contents($fields['image']->path());
         $fields['imageLarge'] = file_get_contents($fields['imageLarge']->path());
         $fields['Height'] = $headers['COMPUTED']['Height'] ?? '';
@@ -107,12 +106,6 @@ class PhotoResourceController extends Controller
     public function edit($id)
     {
 
-//        dd(BrockphotographyPhotos::query()->select( 'ImageId',
-//            'Title',
-//            'Alt',
-//            'PhotoValuePrice',
-//            'CategoryId')->where('ImageId', '=', $id)->first());
-
         return view('photos.update', ['image' => BrockphotographyPhoto::query()->where('id', '=', $id)->first()]);
 
     }
@@ -126,7 +119,6 @@ class PhotoResourceController extends Controller
     public function update(Request $request, $ImageId)
     {
         $ImageId = BrockphotographyPhoto::findOrFail($ImageId);
-        //dd($ImageId);
         $ImageId->name = $request->name;
         $ImageId->description = $request->description;
         // for keeping the small and large blob image or file if nothing is in the update field
@@ -154,7 +146,6 @@ class PhotoResourceController extends Controller
     public function destroy($ImageId)
     {
         $id = BrockphotographyPhoto::findOrFail($ImageId);
-        //dd($id);
         $id->delete();
         return redirect('/landscapes')->with('success', 'Product have been removed');
     }
@@ -162,30 +153,19 @@ class PhotoResourceController extends Controller
     {
         if($request->isMethod('post')){
             $data = $request->all();
-            //echo "<pre>"; print_r($data); die;
         }
-        //generate session Id is not exist
-//        $session_id = Session::get('session_id');
-//        if(empty($session_id)){
-//            $session_id = Session::getId();
-//            Session::put('session_id', $session_id);
-//        }
         if(Auth::check()){
             //user logged in
             $user_id = Auth::user()->id;
-            //dd($user_id);
-            //$countProducts = Cart::where(['user_id'=>$data['user_id']]);
         } else {
             //user not logged in
             $user_id = 0;
-            //$countProducts = Cart::where([])->count();
         }
 
         $quantity = $request->input('quantity');
 
         //save product in carts table
         $item = new Cart;
-//        $item->session_id = $session_id;
         $item->user_id = $user_id;
         $item->image_id = $data['image_id'];
         $item->name = $data['name'];
@@ -197,7 +177,6 @@ class PhotoResourceController extends Controller
     }
     public function cart(){
         $getCartItems = Cart::getCartItems();
-        //dd($getCartItems);
         return view('cart')->with(compact('getCartItems'));
     }
 }

@@ -51,7 +51,9 @@
                 <li> <a href="{{url('/register')}}">Register</a></li>
                 @endauth
             @endif
-            <li id="cart"> <a href="{{url('/cart')}}"><img src="/images/illustrations/cart/shopping_cart.svg" alt="Shopping cart. " id="cartshop"/></a></li>
+            @if(auth()->check())
+                <li id="cart"> <a href="{{url('/cart')}}"><img src="/images/illustrations/cart/shopping_cart.svg" alt="Shopping cart. " id="cartshop"/></a></li>
+            @endif
         </ul>
     </div>
 </nav>

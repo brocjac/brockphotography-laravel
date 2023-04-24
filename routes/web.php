@@ -32,21 +32,12 @@ Route::get('/cart/{id}', '\App\Http\Controllers\CartController@destroy');
 Route::get('empty', function (){
     Cart::destroy();
 });
-//Route::middleware(['auth', 'is_admin'])->group(function () {
-//    Route::get('/something', [\App\Http\Controllers\AdminController::class, 'somethingShouldntBeSeen']);
-//});
-Route::resource('/photos', \App\Http\Controllers\PhotoResourceController::class);
+Route::get('/something', function (){ })->middleware('auth', 'admin');
+Route::resource('/photos', \App\Http\Controllers\PhotoResourceController::class)->middleware('auth', 'admin');
 Route::post("/logout",[LogoutController::class,"store"])->name("logout");
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Route::get('products', [\App\Http\Controllers\PhotoResourceController::class, 'productList'])->name('photo.list');
-//Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
-//Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
-//Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
-//Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
-//Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
 
 
 Route::get('/dashboard', function () {

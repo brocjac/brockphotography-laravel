@@ -7,6 +7,7 @@
     <link href="{{asset('css/lightbox.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/bootstrap-modified.css')}}" rel="stylesheet">
 </head>
+<body>
 <div>
 <nav>
     <h3><a class="links" href="{{url('/')}}">Brock Photography</a></h3>
@@ -52,7 +53,11 @@
                         <li> <a href="{{url('/register')}}">Register</a></li>
                         @endauth
                 @endif
+            @if(auth()->check())
             <li id="cart"> <a href="{{url('/cart')}}"><img src="/images/illustrations/cart/shopping_cart.svg" alt="Shopping cart. " id="cartshop"/></a></li>
+            @else
+
+            @endif
         </ul>
     </div>
 </nav>

@@ -187,25 +187,31 @@ nav {
 	z-index: -1;
 	filter: brightness(65%);
 }
+.homeHeaderText {
+    position: absolute;
+    top: 30%;
+}
 .mainTitle {
-	position: absolute;
 	color: #FFFFFF;
 	top: 35%;
 	left: 10%;
 	font-size: 6rem;
-	/*transform: translate(-35%, -40%);*/
 }
 .titleDescription {
-	position: absolute;
 	color: #FFFFFF;
-	top: 46.5%;
+	top: 48%;
 	padding-top: 25px;
 	left: 10%;
 	font-size: 2rem;
-	/*transform: translate(-35%, -40%);*/
+}
+.welcome {
+    color: #FFFFFF;
+    top: 54%;
+    padding-top: 25px;
+    left: 10%;
+    font-size: 2rem;
 }
 .downArrow {
-	position: absolute;
 	height: 50px;
 	left: 50%;
 	top: 90%;
